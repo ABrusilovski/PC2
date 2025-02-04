@@ -31,19 +31,14 @@ namespace My_First_Program
             if (!int.TryParse(monthsTextBox.Text, out int months) || months < 1 || months >12)
             {
                 monthsTextBox.Text = "";
-                MessageBox.Show("Invalid entry of membership length. Please enter a value between 1 and 12.");
+                MessageBox.Show("Invalid entry of membership length. \nPlease enter a value between 1 and 12.");
                 return; // stop execution if input is invalid
 
             }
 
-
             double monthlyFee = GetBaseMembershipFee();
+            monthlyFee += GetAdditionalOptionsFee();
 
-
-
-            if (yogaCheckBox.Checked) { monthlyFee += YOGA_FEE; }
-            if (karateCheckBox.Checked) { monthlyFee += KARATE_FEE; }
-            if (trainerCheckBox.Checked) { monthlyFee += TRAINER_FEE; }
 
             double totalFee = monthlyFee * months;
 
@@ -57,6 +52,15 @@ namespace My_First_Program
             if (childRadioButton.Checked) return CHILD_RATE;
             if (studentRadioButton.Checked) return STUDENT_RATE;
             return SENIOR_RATE; // Default to Senior Rate
+        }
+
+        //helper method to calculate additional options fee
+        private double GetAdditionalOptionsFee() {
+            double additionalFee = 0;
+            if (yogaCheckBox.Checked) additionalFee += YOGA_FEE;
+            if (karateCheckBox.Checked) additionalFee += KARATE_FEE;
+            if (trainerCheckBox.Checked) additionalFee += TRAINER_FEE;
+            return additionalFee;
         }
 
         private void clearButton_Click(object sender, EventArgs e)

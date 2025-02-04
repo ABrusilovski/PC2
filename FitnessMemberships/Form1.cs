@@ -26,30 +26,27 @@ namespace My_First_Program
 
         private void calcButton_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(monthsTextBox.Text, out int months))
+            if (int.TryParse(monthsTextBox.Text, out int months) || months <=0)
             {
-                double monthlyFee;
-
-                if (adultRadioButton.Checked) { monthlyFee = ADULT_RATE; }
-                else if (childRadioButton.Checked) { monthlyFee = CHILD_RATE; }
-                else if (studentRadioButton.Checked) { monthlyFee = STUDENT_RATE; }
-                else { monthlyFee = SENIOR_RATE; }
-
-                if (yogaCheckBox.Checked) { monthlyFee += YOGA_FEE; }
-                if (karateCheckBox.Checked) { monthlyFee += KARATE_FEE; }
-                if (trainerCheckBox.Checked) { monthlyFee += TRAINER_FEE; }
-
-                double totalFee = monthlyFee * months;
-
-                monthlyFeeDisplay.Text = monthlyFee.ToString("c");
-                totalFeeDisplay.Text = totalFee.ToString("c");
-
+                MessageBox.Show("Please enter a valid number of months.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                monthsTextBox.Clear();
+                return;
             }
-            else
-            {
-                monthsTextBox.Text = "";
-                MessageBox.Show("Invalid entry of membership length.");
-            }
+            double monthlyFee;
+
+            if (adultRadioButton.Checked) { monthlyFee = ADULT_RATE; }
+            else if (childRadioButton.Checked) { monthlyFee = CHILD_RATE; }
+            else if (studentRadioButton.Checked) { monthlyFee = STUDENT_RATE; }
+            else { monthlyFee = SENIOR_RATE; }
+
+            if (yogaCheckBox.Checked) { monthlyFee += YOGA_FEE; }
+            if (karateCheckBox.Checked) { monthlyFee += KARATE_FEE; }
+            if (trainerCheckBox.Checked) { monthlyFee += TRAINER_FEE; }
+
+            double totalFee = monthlyFee * months;
+
+            monthlyFeeDisplay.Text = monthlyFee.ToString("c");
+            totalFeeDisplay.Text = totalFee.ToString("c");
         }
 
         private void clearButton_Click(object sender, EventArgs e)

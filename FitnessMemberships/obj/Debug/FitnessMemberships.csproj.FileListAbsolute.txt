@@ -8,3 +8,13 @@ D:\VS\Workspace\My First Program\obj\Debug\FitnessMemberships.csproj.GenerateRes
 D:\VS\Workspace\My First Program\obj\Debug\FitnessMemberships.csproj.CoreCompileInputs.cache
 D:\VS\Workspace\My First Program\obj\Debug\My First Program.exe
 D:\VS\Workspace\My First Program\obj\Debug\My First Program.pdb
+C:\Users\melis\OneDrive\Documents\SCHOOL\Vanier\winter 2025\c#\Project\PC2\FitnessMemberships\bin\Debug\My First Program.exe.config
+C:\Users\melis\OneDrive\Documents\SCHOOL\Vanier\winter 2025\c#\Project\PC2\FitnessMemberships\bin\Debug\My First Program.exe
+C:\Users\melis\OneDrive\Documents\SCHOOL\Vanier\winter 2025\c#\Project\PC2\FitnessMemberships\bin\Debug\My First Program.pdb
+C:\Users\melis\OneDrive\Documents\SCHOOL\Vanier\winter 2025\c#\Project\PC2\FitnessMemberships\obj\Debug\FitnessMemberships.csproj.AssemblyReference.cache
+C:\Users\melis\OneDrive\Documents\SCHOOL\Vanier\winter 2025\c#\Project\PC2\FitnessMemberships\obj\Debug\My_First_Program.Form1.resources
+C:\Users\melis\OneDrive\Documents\SCHOOL\Vanier\winter 2025\c#\Project\PC2\FitnessMemberships\obj\Debug\My_First_Program.Properties.Resources.resources
+C:\Users\melis\OneDrive\Documents\SCHOOL\Vanier\winter 2025\c#\Project\PC2\FitnessMemberships\obj\Debug\FitnessMemberships.csproj.GenerateResource.cache
+C:\Users\melis\OneDrive\Documents\SCHOOL\Vanier\winter 2025\c#\Project\PC2\FitnessMemberships\obj\Debug\FitnessMemberships.csproj.CoreCompileInputs.cache
+C:\Users\melis\OneDrive\Documents\SCHOOL\Vanier\winter 2025\c#\Project\PC2\FitnessMemberships\obj\Debug\My First Program.exe
+C:\Users\melis\OneDrive\Documents\SCHOOL\Vanier\winter 2025\c#\Project\PC2\FitnessMemberships\obj\Debug\My First Program.pdb

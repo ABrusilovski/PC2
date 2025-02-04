@@ -35,7 +35,7 @@ namespace My_First_Program
                 return; // stop execution if input is invalid
 
             }
-
+            //test
             double monthlyFee = GetBaseMembershipFee();
             monthlyFee += GetAdditionalOptionsFee();
 

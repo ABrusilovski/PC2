@@ -2,19 +2,49 @@
 
 namespace My_First_Program
 {
-    public class Membership
+    //---MEMBERSHIPS
+    public abstract class Membership
     {
-        public double MonthlyRate { get; set; }
+        public double BaseRate { get; protected set; }
 
-        public Membership(double rate)
+        public virtual double GetBaseMembershipFee()
         {
-            MonthlyRate = rate;
-        }
-
-        public virtual double CalculateMonthlyFee()
-        {
-            return MonthlyRate;
+            return BaseRate;
         }
     }
+
+    // abstract class for memberships
+    public class AdultMembership : Membership
+    {
+        public AdultMembership()
+        {
+            BaseRate = 25.0;
+        }
+    }
+
+    public class ChildMembership : Membership
+    {
+        public ChildMembership()
+        {
+            BaseRate = 10.0;
+        }
+    }
+
+    public class StudentMembership : Membership
+    {
+        public StudentMembership()
+        {
+            BaseRate = 15.0;
+        }
+    }
+
+    public class SeniorMembership : Membership
+    {
+        public SeniorMembership()
+        {
+            BaseRate = 12.5;
+        }
+    }
+
 }
 

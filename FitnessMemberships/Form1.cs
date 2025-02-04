@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Fitness;
 
 //TODO need to fix namespace problem
 namespace My_First_Program
@@ -59,13 +60,13 @@ namespace My_First_Program
     
     //----OPTIONS
     //abstact class for AdditionalOption
-    public abstract class AdditionalOption
+    public abstract class Options
     {
         public abstract double GetFee();
     }
 
     // Concrete classes for each option
-    public class Yoga : AdditionalOption
+    public class Yoga : Options
     {
         public override double GetFee()
         {
@@ -73,7 +74,7 @@ namespace My_First_Program
         }
     }
 
-    public class Karate : AdditionalOption
+    public class Karate : Options
     {
         public override double GetFee()
         {
@@ -81,7 +82,7 @@ namespace My_First_Program
         }
     }
 
-    public class Trainer : AdditionalOption
+    public class Trainer : Options
     {
         public override double GetFee()
         {
@@ -123,10 +124,10 @@ namespace My_First_Program
         // Get the type of membership selected
         private Membership GetMembershipType()
         {
-            if (adultRadioButton.Checked) return new AdultMembership();
+            if (seniorRadioButton.Checked) return new SeniorMembership();
             if (childRadioButton.Checked) return new ChildMembership();
             if (studentRadioButton.Checked) return new StudentMembership();
-            return new SeniorMembership(); // Default to Senior Membership
+            return new AdultMembership();// Default to Adult Membership
         }
 
         // Get the total additional fee for options selected
@@ -138,21 +139,19 @@ namespace My_First_Program
             if (karateCheckBox.Checked) additionalFee += (new Karate().GetFee());
             if (trainerCheckBox.Checked) additionalFee += (new Trainer().GetFee());
 
-           
-
             return additionalFee;
         }
 
         private void clearButton_Click(object sender, EventArgs e)
         {
+            //clears all chosen options and checked box, returns to default
             yogaCheckBox.Checked = false;
             karateCheckBox.Checked = false;
             trainerCheckBox.Checked = false;
-
             monthsTextBox.Text = "";
-
             monthlyFeeDisplay.Text = "";
             totalFeeDisplay.Text = "";
+            adultRadioButton.Checked = true;
         }
 
         private void exitButton_Click(object sender, EventArgs e)

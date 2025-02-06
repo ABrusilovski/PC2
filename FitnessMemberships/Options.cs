@@ -1,9 +1,12 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace My_First_Program
 {
-    //----OPTIONS
-    //abstact class for AdditionalOption
+    //base class for Options
     public abstract class Options
     {
         public abstract double GetFee();
@@ -14,7 +17,7 @@ namespace My_First_Program
     {
         public override double GetFee()
         {
-            return 20.0; 
+            return 20.0;
         }
     }
 
@@ -22,7 +25,7 @@ namespace My_First_Program
     {
         public override double GetFee()
         {
-            return 30.0; 
+            return 30.0;
         }
     }
 
@@ -30,8 +33,7 @@ namespace My_First_Program
     {
         public override double GetFee()
         {
-            return 25.0; 
+            return 25.0;
         }
     }
 }
-

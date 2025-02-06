@@ -1,50 +1,42 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace My_First_Program
 {
-    //---MEMBERSHIPS
+    // Membership base class
     public abstract class Membership
     {
-        public double BaseRate { get; protected set; }
+        //derived classes (changes value per class)
+        public abstract double BaseRate { get; }
 
-        public virtual double GetBaseMembershipFee()
+        // base method returns BaseRate
+        public double GetBaseMembershipFee()
         {
             return BaseRate;
         }
     }
 
-    // abstract class for memberships
+    // Specific membership types
     public class AdultMembership : Membership
     {
-        public AdultMembership()
-        {
-            BaseRate = 25.0;
-        }
+        public override double BaseRate => 25.0;
     }
 
     public class ChildMembership : Membership
     {
-        public ChildMembership()
-        {
-            BaseRate = 10.0;
-        }
+        public override double BaseRate => 10.0;
     }
 
     public class StudentMembership : Membership
     {
-        public StudentMembership()
-        {
-            BaseRate = 15.0;
-        }
+        public override double BaseRate => 15.0;
     }
 
     public class SeniorMembership : Membership
     {
-        public SeniorMembership()
-        {
-            BaseRate = 12.5;
-        }
+        public override double BaseRate => 12.5;
     }
-
 }
-

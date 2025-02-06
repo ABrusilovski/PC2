@@ -7,96 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Fitness;
 
-//TODO need to fix namespace problem
 namespace My_First_Program
 {
-
-    //---MEMBERSHIPS
-    public abstract class Membership
-    {
-        public double BaseRate { get; protected set; }
-
-        public virtual double GetBaseMembershipFee()
-        {
-            return BaseRate;
-        }
-    }
-
-    // abstract class for memberships
-    public class AdultMembership : Membership
-    {
-        public AdultMembership()
-        {
-            BaseRate = 25.0;
-        }
-    }
-
-    public class ChildMembership : Membership
-    {
-        public ChildMembership()
-        {
-            BaseRate = 10.0;
-        }
-    }
-
-    public class StudentMembership : Membership
-    {
-        public StudentMembership()
-        {
-            BaseRate = 15.0;
-        }
-    }
-
-    public class SeniorMembership : Membership
-    {
-        public SeniorMembership()
-        {
-            BaseRate = 12.5;
-        }
-    }
-    
-    
-    //----OPTIONS
-    //abstact class for AdditionalOption
-    public abstract class Options
-    {
-        public abstract double GetFee();
-    }
-
-    // Concrete classes for each option
-    public class Yoga : Options
-    {
-        public override double GetFee()
-        {
-            return 20.0; // Yoga fee
-        }
-    }
-
-    public class Karate : Options
-    {
-        public override double GetFee()
-        {
-            return 30.0; // Karate fee
-        }
-    }
-
-    public class Trainer : Options
-    {
-        public override double GetFee()
-        {
-            return 25.0; // Trainer fee
-        }
-    }
-
 
     //FORM
     public partial class Form1 : Form
     {
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
 
         // Button click event for calculating fees
@@ -110,7 +30,7 @@ namespace My_First_Program
                 return; // stop execution if input is invalid
             }
 
-            Membership membership = GetMembershipType();
+            Membership membership = GetMembershipType(); //gets the membershiptype in a helper method 
             double baseFee = membership.GetBaseMembershipFee();
             double additionalFee = GetAdditionalOptionsFee();
 
@@ -121,20 +41,21 @@ namespace My_First_Program
             totalFeeDisplay.Text = totalFee.ToString("c");
         }
 
-        // Get the type of membership selected
+        // helper method to get the type of membership selected
         private Membership GetMembershipType()
         {
             if (seniorRadioButton.Checked) return new SeniorMembership();
             if (childRadioButton.Checked) return new ChildMembership();
             if (studentRadioButton.Checked) return new StudentMembership();
-            return new AdultMembership();// Default to Adult Membership
+            return new AdultMembership(); // Default to Adult Membership
+
         }
 
-        // Get the total additional fee for options selected
+        //helper method to get the total additional fee for options selected
         private double GetAdditionalOptionsFee()
         {
             double additionalFee = 0;
-            
+
             if (yogaCheckBox.Checked) additionalFee += (new Yoga().GetFee());
             if (karateCheckBox.Checked) additionalFee += (new Karate().GetFee());
             if (trainerCheckBox.Checked) additionalFee += (new Trainer().GetFee());

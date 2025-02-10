@@ -1,4 +1,2 @@
-Client ,Membership Type, Options , Months, Total Fee
-John Doe, Child, Yoga Karate Trainer,5,425
-testing two, Child, Yoga,3,90
-Melissa B, Student, Yoga Karate Trainer,2,180
+Client ,Membership Type, Options , Months, Monthly Fee, Total Fee
+John Doe, Adult, Yoga Karate Trainer, 5, $100.00, $500.00

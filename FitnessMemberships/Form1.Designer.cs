@@ -52,6 +52,7 @@
             this.last_name = new System.Windows.Forms.TextBox();
             this.first_name = new System.Windows.Forms.TextBox();
             this.register = new System.Windows.Forms.Button();
+            this.view_button = new System.Windows.Forms.Button();
             this.typeGroupBox.SuspendLayout();
             this.optionsGroup.SuspendLayout();
             this.lengthGroup.SuspendLayout();
@@ -325,6 +326,16 @@
             this.register.UseVisualStyleBackColor = true;
             this.register.Click += new System.EventHandler(this.register_Click);
             // 
+            // view_button
+            // 
+            this.view_button.Location = new System.Drawing.Point(484, 40);
+            this.view_button.Name = "view_button";
+            this.view_button.Size = new System.Drawing.Size(86, 67);
+            this.view_button.TabIndex = 9;
+            this.view_button.Text = "View All Client";
+            this.view_button.UseVisualStyleBackColor = true;
+            this.view_button.Click += new System.EventHandler(this.view_Click);
+            // 
             // Form1
             // 
             this.AcceptButton = this.calcButton;
@@ -332,6 +343,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.clearButton;
             this.ClientSize = new System.Drawing.Size(585, 649);
+            this.Controls.Add(this.view_button);
             this.Controls.Add(this.register);
             this.Controls.Add(this.client_name);
             this.Controls.Add(this.exitButton);
@@ -384,6 +396,7 @@
         private System.Windows.Forms.TextBox last_name;
         private System.Windows.Forms.TextBox first_name;
         private System.Windows.Forms.Button register;
+        private System.Windows.Forms.Button view_button;
     }
 }
 

@@ -159,12 +159,19 @@ namespace My_First_Program
             string fullname = first_name.Text.Trim() + " " + last_name.Text.Trim();
             string membershipType = GetMembershipType().ToString(); // returns ToString() value of each memberships
             string options = GetSelectedOptions(); //string name of the options
+            //totalFee
             decimal totalFee = decimal.Parse(totalFeeDisplay.Text, NumberStyles.Currency);
             string formattedTotalFee = totalFee.ToString("C");
+
+            //monthlyFee
+            decimal monthlyFee = decimal.Parse(monthlyFeeDisplay.Text, NumberStyles.Currency);
+            string fortmatedMonthly = monthlyFee.ToString("C");
+
+
             string months = monthsTextBox.Text; 
 
             string filePath = "memberships.csv";
-            string csvLine = $"{fullname}, {membershipType}, {options}, {months}, {totalFee}";
+            string csvLine = $"{fullname}, {membershipType}, {options}, {months}, ${monthlyFee}, ${totalFee}";
 
             try
             { 
@@ -173,7 +180,7 @@ namespace My_First_Program
                     // If file is newly created, add headers
                     if (new FileInfo(filePath).Length == 0)
                     {
-                        txt.WriteLine("Client ,Membership Type, Options , Months, Total Fee");
+                        txt.WriteLine("Client ,Membership Type, Options , Months, Monthly Fee, Total Fee");
                     }
                     // Write the new registration entry
                     txt.WriteLine($"{csvLine}");
@@ -187,9 +194,26 @@ namespace My_First_Program
             }
         }
 
+        private void view_Click(object sender, EventArgs e)
+        {
+            // Create an instance of ViewForm
+            ViewForm viewForm = new ViewForm();
+
+            // Path to the CSV file
+            string filePath = "memberships.csv";
+
+            // Load the client data into the ViewForm's RichTextBox
+            viewForm.LoadClientData(filePath);
+
+            // Show the ViewForm as a dialog
+            viewForm.ShowDialog();
+        }
+
         private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        
     }
 }

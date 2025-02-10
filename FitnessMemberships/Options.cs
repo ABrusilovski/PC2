@@ -10,6 +10,10 @@ namespace My_First_Program
     public abstract class Options
     {
         public abstract double GetFee();
+        public override string ToString()
+        {
+            return this.GetType().Name;
+        }
     }
 
     // Concrete classes for each option
@@ -19,6 +23,10 @@ namespace My_First_Program
         {
             return 20.0;
         }
+        public override string ToString()
+        {
+            return "Yoga";
+        }
     }
 
     public class Karate : Options
@@ -27,6 +35,11 @@ namespace My_First_Program
         {
             return 30.0;
         }
+        public override string ToString()
+        {
+            return "Karate";
+        }
+
     }
 
     public class Trainer : Options
@@ -34,6 +47,10 @@ namespace My_First_Program
         public override double GetFee()
         {
             return 25.0;
+        }
+        public override string ToString()
+        {
+            return "Personal Trainer";
         }
     }
 }

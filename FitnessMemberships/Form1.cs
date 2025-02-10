@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +19,56 @@ namespace My_First_Program
         public Form1()
         {
             InitializeComponent(); 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        { //Placeholders
+            first_name.Text = "Enter First Name";
+            first_name.ForeColor = Color.Gray;
+
+            last_name.Text = "Enter Last Name";
+            last_name.ForeColor = Color.Gray;
+
+        }
+        // Handling the TextBox "Enter" event (focus)
+        private void first_name_Enter(object sender, EventArgs e)
+        {
+            // If the textbox contains the placeholder text, clear it when clicked
+            if (first_name.Text == "Enter First Name")
+            {
+                first_name.Text = "";
+                first_name.ForeColor = Color.Black;
+            }
+        }
+
+        // Handling the TextBox "Leave" event (losing focus)
+        private void first_name_Leave(object sender, EventArgs e)
+        {
+            // If the textbox is empty, restore the placeholder text
+            if (string.IsNullOrWhiteSpace(first_name.Text))
+            {
+                first_name.Text = "Enter First Name";
+                first_name.ForeColor = Color.Gray;
+            }
+        }
+
+        // Repeat the same for last_name
+        private void last_name_Enter(object sender, EventArgs e)
+        {
+            if (last_name.Text == "Enter Last Name")
+            {
+                last_name.Text = "";
+                last_name.ForeColor = Color.Black;
+            }
+        }
+
+        private void last_name_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(last_name.Text))
+            {
+                last_name.Text = "Enter Last Name";
+                last_name.ForeColor = Color.Gray;
+            }
         }
 
         // Button click event for calculating fees
@@ -50,6 +102,18 @@ namespace My_First_Program
             return new AdultMembership(); // Default to Adult Membership
 
         }
+        //returns string value of the options choosen
+        private string GetSelectedOptions()
+        {
+            string options = "";
+            if (yogaCheckBox.Checked) options += "Yoga";
+            if (karateCheckBox.Checked) options += " Karate";
+            if (trainerCheckBox.Checked) options += " Trainer";
+
+            return options;
+        }
+
+
 
         //helper method to get the total additional fee for options selected
         private double GetAdditionalOptionsFee()
@@ -73,6 +137,54 @@ namespace My_First_Program
             monthlyFeeDisplay.Text = "";
             totalFeeDisplay.Text = "";
             adultRadioButton.Checked = true;
+
+            //for client info
+            first_name.Text = "Enter First Name";
+            first_name.ForeColor = Color.Gray;
+
+            last_name.Text = "Enter Last Name";
+            last_name.ForeColor = Color.Gray;
+        }
+
+        private void register_Click(object sender, EventArgs e)
+        {
+            // Validate Name Inputs
+            if (first_name.Text == "Enter First Name" || string.IsNullOrWhiteSpace(first_name.Text) ||
+                last_name.Text == "Enter Last Name" || string.IsNullOrWhiteSpace(last_name.Text))
+            {
+                MessageBox.Show("Please enter a valid first and last name.");
+                return;
+            }
+            // Gather client information
+            string fullname = first_name.Text.Trim() + " " + last_name.Text.Trim();
+            string membershipType = GetMembershipType().ToString(); // returns ToString() value of each memberships
+            string options = GetSelectedOptions(); //string name of the options
+            decimal totalFee = decimal.Parse(totalFeeDisplay.Text, NumberStyles.Currency);
+            string formattedTotalFee = totalFee.ToString("C");
+            string months = monthsTextBox.Text; 
+
+            string filePath = "memberships.csv";
+            string csvLine = $"{fullname}, {membershipType}, {options}, {months}, {totalFee}";
+
+            try
+            { 
+                using (StreamWriter txt = new StreamWriter(filePath, true))
+                {
+                    // If file is newly created, add headers
+                    if (new FileInfo(filePath).Length == 0)
+                    {
+                        txt.WriteLine("Client ,Membership Type, Options , Months, Total Fee");
+                    }
+                    // Write the new registration entry
+                    txt.WriteLine($"{csvLine}");
+                }
+
+                MessageBox.Show("Registration saved successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving registration: " + ex.Message);
+            }
         }
 
         private void exitButton_Click(object sender, EventArgs e)

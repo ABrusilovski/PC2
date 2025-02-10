@@ -48,10 +48,15 @@
             this.calcButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
+            this.client_name = new System.Windows.Forms.GroupBox();
+            this.last_name = new System.Windows.Forms.TextBox();
+            this.first_name = new System.Windows.Forms.TextBox();
+            this.register = new System.Windows.Forms.Button();
             this.typeGroupBox.SuspendLayout();
             this.optionsGroup.SuspendLayout();
             this.lengthGroup.SuspendLayout();
             this.feesGroup.SuspendLayout();
+            this.client_name.SuspendLayout();
             this.SuspendLayout();
             // 
             // typeGroupBox
@@ -61,9 +66,9 @@
             this.typeGroupBox.Controls.Add(this.childRadioButton);
             this.typeGroupBox.Controls.Add(this.adultRadioButton);
             this.typeGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.typeGroupBox.Location = new System.Drawing.Point(28, 32);
+            this.typeGroupBox.Location = new System.Drawing.Point(41, 137);
             this.typeGroupBox.Name = "typeGroupBox";
-            this.typeGroupBox.Size = new System.Drawing.Size(150, 150);
+            this.typeGroupBox.Size = new System.Drawing.Size(214, 150);
             this.typeGroupBox.TabIndex = 0;
             this.typeGroupBox.TabStop = false;
             this.typeGroupBox.Text = "Type of Membership";
@@ -122,9 +127,9 @@
             this.optionsGroup.Controls.Add(this.karateCheckBox);
             this.optionsGroup.Controls.Add(this.yogaCheckBox);
             this.optionsGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optionsGroup.Location = new System.Drawing.Point(238, 32);
+            this.optionsGroup.Location = new System.Drawing.Point(292, 137);
             this.optionsGroup.Name = "optionsGroup";
-            this.optionsGroup.Size = new System.Drawing.Size(222, 150);
+            this.optionsGroup.Size = new System.Drawing.Size(242, 150);
             this.optionsGroup.TabIndex = 1;
             this.optionsGroup.TabStop = false;
             this.optionsGroup.Text = "Options";
@@ -167,9 +172,9 @@
             this.lengthGroup.Controls.Add(this.monthsTextBox);
             this.lengthGroup.Controls.Add(this.lengthPromptLabel);
             this.lengthGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lengthGroup.Location = new System.Drawing.Point(28, 190);
+            this.lengthGroup.Location = new System.Drawing.Point(41, 295);
             this.lengthGroup.Name = "lengthGroup";
-            this.lengthGroup.Size = new System.Drawing.Size(150, 144);
+            this.lengthGroup.Size = new System.Drawing.Size(214, 144);
             this.lengthGroup.TabIndex = 2;
             this.lengthGroup.TabStop = false;
             this.lengthGroup.Text = "Membership Length";
@@ -197,9 +202,9 @@
             this.feesGroup.Controls.Add(this.monthlyFeeDisplay);
             this.feesGroup.Controls.Add(this.monthlyLabel);
             this.feesGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.feesGroup.Location = new System.Drawing.Point(238, 190);
+            this.feesGroup.Location = new System.Drawing.Point(292, 295);
             this.feesGroup.Name = "feesGroup";
-            this.feesGroup.Size = new System.Drawing.Size(222, 144);
+            this.feesGroup.Size = new System.Drawing.Size(242, 144);
             this.feesGroup.TabIndex = 3;
             this.feesGroup.TabStop = false;
             this.feesGroup.Text = "Membership Fees";
@@ -247,9 +252,9 @@
             // calcButton
             // 
             this.calcButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.calcButton.Location = new System.Drawing.Point(39, 378);
+            this.calcButton.Location = new System.Drawing.Point(118, 474);
             this.calcButton.Name = "calcButton";
-            this.calcButton.Size = new System.Drawing.Size(75, 55);
+            this.calcButton.Size = new System.Drawing.Size(75, 35);
             this.calcButton.TabIndex = 4;
             this.calcButton.Text = "&Calculate";
             this.calcButton.UseVisualStyleBackColor = true;
@@ -259,9 +264,9 @@
             // 
             this.clearButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(204, 378);
+            this.clearButton.Location = new System.Drawing.Point(338, 474);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(75, 55);
+            this.clearButton.Size = new System.Drawing.Size(75, 35);
             this.clearButton.TabIndex = 5;
             this.clearButton.Text = "Clea&r";
             this.clearButton.UseVisualStyleBackColor = true;
@@ -270,13 +275,55 @@
             // exitButton
             // 
             this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton.Location = new System.Drawing.Point(369, 378);
+            this.exitButton.Location = new System.Drawing.Point(338, 569);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(75, 55);
+            this.exitButton.Size = new System.Drawing.Size(75, 35);
             this.exitButton.TabIndex = 6;
             this.exitButton.Text = "E&xit";
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
+            // client_name
+            // 
+            this.client_name.Controls.Add(this.last_name);
+            this.client_name.Controls.Add(this.first_name);
+            this.client_name.Location = new System.Drawing.Point(52, 34);
+            this.client_name.Name = "client_name";
+            this.client_name.Size = new System.Drawing.Size(426, 84);
+            this.client_name.TabIndex = 7;
+            this.client_name.TabStop = false;
+            this.client_name.Text = "Client Name";
+            // 
+            // last_name
+            // 
+            this.last_name.Location = new System.Drawing.Point(16, 53);
+            this.last_name.Name = "last_name";
+            this.last_name.Size = new System.Drawing.Size(393, 20);
+            this.last_name.TabIndex = 1;
+            this.last_name.Text = "last_name";
+            this.last_name.Enter += new System.EventHandler(this.last_name_Enter);
+            this.last_name.Leave += new System.EventHandler(this.last_name_Leave);
+            // 
+            // first_name
+            // 
+            this.first_name.Location = new System.Drawing.Point(16, 24);
+            this.first_name.Name = "first_name";
+            this.first_name.Size = new System.Drawing.Size(394, 20);
+            this.first_name.TabIndex = 0;
+            this.first_name.Text = "first_name";
+            this.first_name.Enter += new System.EventHandler(this.first_name_Enter);
+            this.first_name.Leave += new System.EventHandler(this.first_name_Leave);
+            // 
+            // register
+            // 
+            this.register.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.register.Location = new System.Drawing.Point(118, 569);
+            this.register.Name = "register";
+            this.register.Size = new System.Drawing.Size(75, 35);
+            this.register.TabIndex = 8;
+            this.register.Text = "&Register";
+            this.register.UseVisualStyleBackColor = true;
+            this.register.Click += new System.EventHandler(this.register_Click);
             // 
             // Form1
             // 
@@ -284,7 +331,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.clearButton;
-            this.ClientSize = new System.Drawing.Size(484, 461);
+            this.ClientSize = new System.Drawing.Size(585, 649);
+            this.Controls.Add(this.register);
+            this.Controls.Add(this.client_name);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.calcButton);
@@ -294,6 +343,7 @@
             this.Controls.Add(this.typeGroupBox);
             this.Name = "Form1";
             this.Text = "Fitness Membership Calculator";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.typeGroupBox.ResumeLayout(false);
             this.typeGroupBox.PerformLayout();
             this.optionsGroup.ResumeLayout(false);
@@ -302,6 +352,8 @@
             this.lengthGroup.PerformLayout();
             this.feesGroup.ResumeLayout(false);
             this.feesGroup.PerformLayout();
+            this.client_name.ResumeLayout(false);
+            this.client_name.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -328,6 +380,10 @@
         private System.Windows.Forms.Button calcButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.GroupBox client_name;
+        private System.Windows.Forms.TextBox last_name;
+        private System.Windows.Forms.TextBox first_name;
+        private System.Windows.Forms.Button register;
     }
 }
 

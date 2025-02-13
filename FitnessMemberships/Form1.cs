@@ -75,10 +75,10 @@ namespace My_First_Program
         private void calcButton_Click(object sender, EventArgs e)
         {
             //months validation
-            if (!int.TryParse(monthsTextBox.Text, out int months) || months < 1 || months > 12)
+            if (!int.TryParse(monthsTextBox.Text, out int months) || months < 1)
             {
                 monthsTextBox.Text = "";
-                MessageBox.Show("Invalid entry of membership length. \nPlease enter a value between 1 and 12.");
+                MessageBox.Show("Invalid entry of membership length. \nPlease enter a value greater than 1.");
                 return; // stop execution if input is invalid
             }
 

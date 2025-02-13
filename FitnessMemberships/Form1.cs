@@ -148,6 +148,13 @@ namespace My_First_Program
 
         private void register_Click(object sender, EventArgs e)
         {
+
+            // Check if there are values in the fee display textboxes
+            if (monthlyFeeDisplay.Text == "" || totalFeeDisplay.Text == "")
+            {
+                MessageBox.Show("Please calculate fees first.");
+                return;
+            }
             // Validate Name Inputs
             if (first_name.Text == "Enter First Name" || string.IsNullOrWhiteSpace(first_name.Text) ||
                 last_name.Text == "Enter Last Name" || string.IsNullOrWhiteSpace(last_name.Text))

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace My_First_Program
 {
@@ -26,39 +28,131 @@ namespace My_First_Program
     // Specific membership types
     public class AdultMembership : Membership
     {
-        public override double BaseRate => 25.0;
+        private readonly string name = "Adult";
+        public override double BaseRate
+        {
+            get
+            {
+                try
+                {
+                    using (StreamReader inputFile = new StreamReader(File.OpenRead("membership fees.csv")))
+                    {
+                        string content = inputFile.ReadLine();
+                        string[] header = content.Split(',');
+                        content = inputFile.ReadLine();
+                        string[] values = content.Split(',');
+                        int position = Array.IndexOf(header, name);
+                        return double.Parse(values[position]);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to get membership rate: " + ex.Message);
+                    return 0;
+                }
+            }
+        }
 
         public override string ToString()
         {
-            return "Adult";
+            return name;
         }
     }
 
     public class ChildMembership : Membership
     {
-        public override double BaseRate => 10.0;
+        private readonly string name = "Child";
+        public override double BaseRate
+        {
+            get
+            {
+                try
+                {
+                    using (StreamReader inputFile = new StreamReader(File.OpenRead("membership fees.csv")))
+                    {
+                        string content = inputFile.ReadLine();
+                        string[] header = content.Split(',');
+                        content = inputFile.ReadLine();
+                        string[] values = content.Split(',');
+                        int position = Array.IndexOf(header, name);
+                        return double.Parse(values[position]);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to get membership rate: " + ex.Message);
+                    return 0;
+                }
+            }
+        }
         public override string ToString()
         {
-            return "Child";
+            return name;
         }
     }
 
     public class StudentMembership : Membership
     {
-        public override double BaseRate => 15.0;
+        private readonly string name = "Student";
+        public override double BaseRate
+        {
+            get
+            {
+                try
+                {
+                    using (StreamReader inputFile = new StreamReader(File.OpenRead("membership fees.csv")))
+                    {
+                        string content = inputFile.ReadLine();
+                        string[] header = content.Split(',');
+                        content = inputFile.ReadLine();
+                        string[] values = content.Split(',');
+                        int position = Array.IndexOf(header, name);
+                        return double.Parse(values[position]);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to get membership rate: " + ex.Message);
+                    return 0;
+                }
+            }
+        }
         public override string ToString()
         {
-            return "Student";
+            return name;
         }
     }
 
     public class SeniorMembership : Membership
     {
-        public override double BaseRate => 12.5;
+        private readonly string name = "Senior";
+        public override double BaseRate
+        {
+            get
+            {
+                try
+                {
+                    using (StreamReader inputFile = new StreamReader(File.OpenRead("membership fees.csv")))
+                    {
+                        string content = inputFile.ReadLine();
+                        string[] header = content.Split(',');
+                        content = inputFile.ReadLine();
+                        string[] values = content.Split(',');
+                        int position = Array.IndexOf(header, name);
+                        return double.Parse(values[position]);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to get membership rate: " + ex.Message);
+                    return 0;
+                }
+            }
+        }
 
         public override string ToString()
         {
-            return "Senior";
+            return name;
         }
     }
 }

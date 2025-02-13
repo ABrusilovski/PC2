@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace My_First_Program
 {
@@ -19,38 +21,89 @@ namespace My_First_Program
     // Concrete classes for each option
     public class Yoga : Options
     {
+        private readonly string name = "Yoga";
         public override double GetFee()
         {
-            return 20.0;
+            try
+            {
+                using (StreamReader inputFile = new StreamReader(File.OpenRead("options fees.csv")))
+                {
+                    string content = inputFile.ReadLine();
+                    string[] header = content.Split(',');
+                    content = inputFile.ReadLine();
+                    string[] values = content.Split(',');
+                    int position = Array.IndexOf(header, name);
+                    return double.Parse(values[position]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to get option fee: " + ex.Message);
+                return 0;
+            }
         }
         public override string ToString()
         {
-            return "Yoga";
+            return name;
         }
     }
 
     public class Karate : Options
     {
+        private readonly string name = "Karate";
         public override double GetFee()
         {
-            return 30.0;
+            try
+            {
+                using (StreamReader inputFile = new StreamReader(File.OpenRead("options fees.csv")))
+                {
+                    string content = inputFile.ReadLine();
+                    string[] header = content.Split(',');
+                    content = inputFile.ReadLine();
+                    string[] values = content.Split(',');
+                    int position = Array.IndexOf(header, name);
+                    return double.Parse(values[position]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to get option fee: " + ex.Message);
+                return 0;
+            }
         }
         public override string ToString()
         {
-            return "Karate";
+            return name;
         }
 
     }
 
     public class Trainer : Options
     {
+        private readonly string name = "Trainer";
         public override double GetFee()
         {
-            return 25.0;
+            try
+            {
+                using (StreamReader inputFile = new StreamReader(File.OpenRead("options fees.csv")))
+                {
+                    string content = inputFile.ReadLine();
+                    string[] header = content.Split(',');
+                    content = inputFile.ReadLine();
+                    string[] values = content.Split(',');
+                    int position = Array.IndexOf(header, name);
+                    return double.Parse(values[position]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to get option fee: " + ex.Message);
+                return 0;
+            }
         }
         public override string ToString()
         {
-            return "Personal Trainer";
+            return name;
         }
     }
 }

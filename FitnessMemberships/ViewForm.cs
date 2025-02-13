@@ -35,6 +35,7 @@ namespace My_First_Program
             }
         }
 
+
         private void save_Click(object sender, EventArgs e)
         {
             try
@@ -51,6 +52,11 @@ namespace My_First_Program
             {
                 MessageBox.Show("Error saving the file: " + ex.Message);
             }
+        }
+
+        private void exit_viewform_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -6,6 +6,7 @@ namespace My_First_Program
 {
     public partial class ViewForm : Form
     {
+        private string filePath = "memberships.csv"; // Hardcoded file path
         public ViewForm()
         {
             InitializeComponent();
@@ -31,6 +32,24 @@ namespace My_First_Program
             catch (Exception ex)
             {
                 MessageBox.Show("Error reading the file: " + ex.Message);
+            }
+        }
+
+        private void save_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string content = rtbContent.Text;
+                string[] lines = content.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
+                //saves newlines/edits to the file
+                File.WriteAllLines(filePath, lines);
+
+                MessageBox.Show("Changes saved successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving the file: " + ex.Message);
             }
         }
     }

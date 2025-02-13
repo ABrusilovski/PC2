@@ -16,6 +16,7 @@ namespace My_First_Program
     //FORM
     public partial class Form1 : Form
     {
+        private  string filePath = "memberships.csv"; //hardcoded file path
         public Form1()
         {
             InitializeComponent(); 
@@ -177,7 +178,6 @@ namespace My_First_Program
 
             string months = monthsTextBox.Text; 
 
-            string filePath = "memberships.csv";
             string csvLine = $"{fullname}, {membershipType}, {options}, {months}, ${monthlyFee}, ${totalFee}";
 
             try
@@ -205,9 +205,6 @@ namespace My_First_Program
         {
             // Create an instance of ViewForm
             ViewForm viewForm = new ViewForm();
-
-            // Path to the CSV file
-            string filePath = "memberships.csv";
 
             // Load the client data into the ViewForm's RichTextBox
             viewForm.LoadClientData(filePath);

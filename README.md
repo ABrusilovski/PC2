@@ -2,6 +2,7 @@
 
 ## Author
 Nikita Plamadeala
+Melissa Louise Bangloy
 
 ## Description
 The **Membership Fee Calculator** is a Windows Forms application developed in C# that allows users to:

@@ -17,8 +17,8 @@ The **Membership Fee Calculator** is a Windows Forms application developed in C#
 ## Features
 - **User-friendly Interface:** Windows Forms-based GUI with clear input fields and buttons.
 - **Dynamic Fee Calculation:** Calculates monthly and total membership fees based on user selections.
-- **Data Persistence:** Saves registered membership data to a `memberships.csv` file.
-- **Validation Checks:** Ensures valid name input and prevents incorrect membership length entries.
+- **Data Persistence:** Saves registered membership data to a .csv file.
+- **Validation Checks:** Prevents incorrect membership length entries.
 - **Data Viewing:** Allows users to view saved membership registrations.
 
 ## Installation
@@ -44,5 +44,6 @@ The **Membership Fee Calculator** is a Windows Forms application developed in C#
 ## File Structure
 - `Form1.cs` - Main form handling user input, calculations, and file operations.
 - `Membership.cs` - Defines membership types and fee structures.
+- `Options.cs` - Defines options types and fee structure.
 - `ViewForm.cs` - Form for viewing saved membership data.
 - `memberships.csv` - File storing registered membership details.

@@ -1,6 +1,8 @@
 # Ignore Visual Studio files
 .vs/
-obj/
+/obj/
+/bin/Debug/My First Program.exe
+/bin/Debug/My First Program.pdb
 *.user
 *.suo
 *.cache

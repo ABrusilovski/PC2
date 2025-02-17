@@ -12,29 +12,41 @@ using System.Windows.Forms;
 
 namespace My_First_Program
 {
-
-    //FORM
+    // <summary>
+    // Main form for the Membership Fee Calculator application.
+    // Allows users to enter personal information, select a membership type,
+    // choose additional options, calculate fees, and register the membership.
+    // </summary>
     public partial class Form1 : Form
     {
-        private  string filePath = "memberships.csv"; //hardcoded file path
+        private string filePath = "memberships.csv"; // Hardcoded file path for saving registration data
+
+        // <summary>
+        // Initializes the form components.
+        // </summary>
         public Form1()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
 
+        // <summary>
+        // Handles the form load event to set up placeholder text.
+        // </summary>
         private void Form1_Load(object sender, EventArgs e)
-        { //Placeholders
+        {
             first_name.Text = "Enter First Name";
             first_name.ForeColor = Color.Gray;
 
             last_name.Text = "Enter Last Name";
             last_name.ForeColor = Color.Gray;
-
         }
-        // Handling the TextBox "Enter" event (focus)
+
+        // <summary>
+        // Handles the event when the first name textbox gains focus.
+        // Clears placeholder text if present.
+        // </summary>
         private void first_name_Enter(object sender, EventArgs e)
         {
-            // If the textbox contains the placeholder text, clear it when clicked
             if (first_name.Text == "Enter First Name")
             {
                 first_name.Text = "";
@@ -42,10 +54,12 @@ namespace My_First_Program
             }
         }
 
-        // Handling the TextBox "Leave" event (losing focus)
+        // <summary>
+        // Handles the event when the first name textbox loses focus.
+        // Restores placeholder text if left empty.
+        // </summary>
         private void first_name_Leave(object sender, EventArgs e)
         {
-            // If the textbox is empty, restore the placeholder text
             if (string.IsNullOrWhiteSpace(first_name.Text))
             {
                 first_name.Text = "Enter First Name";
@@ -53,7 +67,10 @@ namespace My_First_Program
             }
         }
 
-        // Repeat the same for last_name
+        // <summary>
+        // Handles the event when the last name textbox gains focus.
+        // Clears placeholder text if present.
+        // </summary>
         private void last_name_Enter(object sender, EventArgs e)
         {
             if (last_name.Text == "Enter Last Name")
@@ -63,6 +80,10 @@ namespace My_First_Program
             }
         }
 
+        // <summary>
+        // Handles the event when the last name textbox loses focus.
+        // Restores placeholder text if left empty.
+        // </summary>
         private void last_name_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(last_name.Text))
@@ -72,18 +93,19 @@ namespace My_First_Program
             }
         }
 
-        // Button click event for calculating fees
+        // <summary>
+        // Handles the button click event to calculate the membership fees.
+        // </summary>
         private void calcButton_Click(object sender, EventArgs e)
         {
-            //months validation
             if (!int.TryParse(monthsTextBox.Text, out int months) || months < 1)
             {
                 monthsTextBox.Text = "";
                 MessageBox.Show("Invalid entry of membership length. \nPlease enter a value greater than 1.");
-                return; // stop execution if input is invalid
+                return;
             }
 
-            Membership membership = GetMembershipType(); //gets the membershiptype in a helper method 
+            Membership membership = GetMembershipType();
             double baseFee = membership.GetBaseMembershipFee();
             double additionalFee = GetAdditionalOptionsFee();
 
@@ -94,43 +116,46 @@ namespace My_First_Program
             totalFeeDisplay.Text = totalFee.ToString("c");
         }
 
-        // helper method to get the type of membership selected
+        // <summary>
+        // Retrieves the selected membership type.
+        // </summary>
         private Membership GetMembershipType()
         {
             if (seniorRadioButton.Checked) return new SeniorMembership();
             if (childRadioButton.Checked) return new ChildMembership();
             if (studentRadioButton.Checked) return new StudentMembership();
-            return new AdultMembership(); // Default to Adult Membership
-
+            return new AdultMembership();
         }
-        //returns string value of the options choosen
+
+        // <summary>
+        // Returns a string representing the additional options chosen.
+        // </summary>
         private string GetSelectedOptions()
         {
             string options = "";
             if (yogaCheckBox.Checked) options += "Yoga";
             if (karateCheckBox.Checked) options += " Karate";
             if (trainerCheckBox.Checked) options += " Trainer";
-
             return options;
         }
 
-
-
-        //helper method to get the total additional fee for options selected
+        // <summary>
+        // Calculates the total additional fee for selected options.
+        // </summary>
         private double GetAdditionalOptionsFee()
         {
             double additionalFee = 0;
-
             if (yogaCheckBox.Checked) additionalFee += (new Yoga().GetFee());
             if (karateCheckBox.Checked) additionalFee += (new Karate().GetFee());
             if (trainerCheckBox.Checked) additionalFee += (new Trainer().GetFee());
-
             return additionalFee;
         }
 
+        // <summary>
+        // Clears all input fields and resets selections.
+        // </summary>
         private void clearButton_Click(object sender, EventArgs e)
         {
-            //clears all chosen options and checked box, returns to default
             yogaCheckBox.Checked = false;
             karateCheckBox.Checked = false;
             trainerCheckBox.Checked = false;
@@ -138,61 +163,45 @@ namespace My_First_Program
             monthlyFeeDisplay.Text = "";
             totalFeeDisplay.Text = "";
             adultRadioButton.Checked = true;
-
-            //for client info
             first_name.Text = "Enter First Name";
             first_name.ForeColor = Color.Gray;
-
             last_name.Text = "Enter Last Name";
             last_name.ForeColor = Color.Gray;
         }
 
+        // <summary>
+        // Registers the membership and saves the details to a CSV file.
+        // </summary>
         private void register_Click(object sender, EventArgs e)
         {
-
-            // Check if there are values in the fee display textboxes
-            if (monthlyFeeDisplay.Text == "" || totalFeeDisplay.Text == "")
+            if (string.IsNullOrWhiteSpace(monthlyFeeDisplay.Text) || string.IsNullOrWhiteSpace(totalFeeDisplay.Text))
             {
                 MessageBox.Show("Please calculate fees first.");
                 return;
             }
-            // Validate Name Inputs
-            if (first_name.Text == "Enter First Name" || string.IsNullOrWhiteSpace(first_name.Text) ||
-                last_name.Text == "Enter Last Name" || string.IsNullOrWhiteSpace(last_name.Text))
+
+            if (first_name.Text == "Enter First Name" || last_name.Text == "Enter Last Name" ||
+                string.IsNullOrWhiteSpace(first_name.Text) || string.IsNullOrWhiteSpace(last_name.Text))
             {
                 MessageBox.Show("Please enter a valid first and last name.");
                 return;
             }
-            // Gather client information
+
             string fullname = first_name.Text.Trim() + " " + last_name.Text.Trim();
-            string membershipType = GetMembershipType().ToString(); // returns ToString() value of each memberships
-            string options = GetSelectedOptions(); //string name of the options
-            //totalFee
+            string membershipType = GetMembershipType().ToString();
+            string options = GetSelectedOptions();
             decimal totalFee = decimal.Parse(totalFeeDisplay.Text, NumberStyles.Currency);
-            string formattedTotalFee = totalFee.ToString("C");
-
-            //monthlyFee
             decimal monthlyFee = decimal.Parse(monthlyFeeDisplay.Text, NumberStyles.Currency);
-            string fortmatedMonthly = monthlyFee.ToString("C");
-
-
-            string months = monthsTextBox.Text; 
-
-            string csvLine = $"{fullname}, {membershipType}, {options}, {months}, ${monthlyFee}, ${totalFee}";
+            string csvLine = $"{fullname}, {membershipType}, {options}, {monthsTextBox.Text}, ${monthlyFee}, ${totalFee}";
 
             try
-            { 
+            {
                 using (StreamWriter txt = new StreamWriter(filePath, true))
                 {
-                    // If file is newly created, add headers
                     if (new FileInfo(filePath).Length == 0)
-                    {
-                        txt.WriteLine("Client ,Membership Type, Options , Months, Monthly Fee, Total Fee");
-                    }
-                    // Write the new registration entry
-                    txt.WriteLine($"{csvLine}");
+                        txt.WriteLine("Client, Membership Type, Options, Months, Monthly Fee, Total Fee");
+                    txt.WriteLine(csvLine);
                 }
-
                 MessageBox.Show("Registration saved successfully!");
             }
             catch (Exception ex)
@@ -201,15 +210,13 @@ namespace My_First_Program
             }
         }
 
+        // <summary>
+        // Opens the ViewForm to display registered client data.
+        // </summary>
         private void view_Click(object sender, EventArgs e)
         {
-            // Create an instance of ViewForm
             ViewForm viewForm = new ViewForm();
-
-            // Load the client data into the ViewForm's RichTextBox
             viewForm.LoadClientData(filePath);
-
-            // Show the ViewForm as a dialog
             viewForm.ShowDialog();
         }
 
@@ -217,7 +224,5 @@ namespace My_First_Program
         {
             this.Close();
         }
-
-        
     }
 }

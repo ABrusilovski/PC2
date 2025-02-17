@@ -1,5 +1,8 @@
 # Membership Fee Calculator
 
+## Author
+Nikita Plamadeala
+
 ## Description
 The **Membership Fee Calculator** is a Windows Forms application developed in C# that allows users to:
 - Enter personal details (first and last name)
@@ -41,7 +44,3 @@ The **Membership Fee Calculator** is a Windows Forms application developed in C#
 - `Membership.cs` - Defines membership types and fee structures.
 - `ViewForm.cs` - Form for viewing saved membership data.
 - `memberships.csv` - File storing registered membership details.
-
-## Author
-Nikita Plamadeala
-
